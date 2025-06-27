@@ -23,6 +23,7 @@ const productDisplay = {
             {{variant.color}}
         </div>
         <button class="button" :disabled='!inStock' @click="addToCart" :class='{disabledButton: !inStock}'>Add To Cart</button>
+        <button class="button" @click="removeFromCart">Remove</button>
     </div>
     `,
         props: {
@@ -59,6 +60,11 @@ const productDisplay = {
         function addToCart() {
              emit('add-to-cart',variants.value[selectedVariant.value].id)
         }
+
+        function removeFromCart() {
+            emit('remove-from-cart',variants.value[selectedVariant.value].id)
+        }
+
         const title = computed(() => {
             return brand.value + ' ' + product.value;
         });
@@ -94,6 +100,7 @@ const productDisplay = {
             sizes,
             cart,
             addToCart,
+            removeFromCart,
             updateImage,
             StockStatus,
             updateVariant,

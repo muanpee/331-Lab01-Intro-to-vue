@@ -5,6 +5,13 @@ const app = Vue.createApp({
         function updateCart(id){
             cart.value.push(id)
         }
+        function removeFromCart(id){
+            const index = cart.value.indexOf(id)
+            if (index > -1) {
+                cart.value.splice(index, 1)
+            }
+        }
+
         // Computed property to show cart contents with counts
         const cartDisplay = computed(() => {
             const counts = {}
@@ -29,6 +36,7 @@ const app = Vue.createApp({
             cart
             ,premium,
             updateCart,
+            removeFromCart,
             cartDisplay
         };
     }
