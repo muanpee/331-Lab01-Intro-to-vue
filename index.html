@@ -13,8 +13,8 @@
 <body>
     <div id="app">
         <div class="nav-bar"></div>
-        <div class="cart">cart ({{ cart }})</div>
-        <product-display :premium="premium"></product-display>
+        <div class="cart">cart ({{ cartDisplay }})</div>
+        <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
         <p v-if="onSale">{{ brand + ' ' + product + ' is on sale' }}</p> 
             <p v-else>Not on Sale</p>
             <button class="button" @click="StockStatus">In Stock</button> <!-- 6.7 -->
