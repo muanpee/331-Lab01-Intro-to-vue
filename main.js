@@ -26,6 +26,7 @@ createApp({
             inventory.value = inventory.value > 0 ? 0 :100;
         }
 
+
         return {
             product,
             image,
