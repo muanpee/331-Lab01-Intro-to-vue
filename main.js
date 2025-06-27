@@ -18,7 +18,7 @@ createApp({
             image,
             inStock,
             inventory,
-            onsale,details,variants
+            onsale,details,variants,sizes
         }
     }
 
