@@ -2,6 +2,7 @@ const app = Vue.createApp({
     setup() {
         const cart = ref([])
         const premium = ref(true)
+        const onSale = ref(false)
         function updateCart(id){
             cart.value.push(id)
         }
@@ -35,6 +36,7 @@ const app = Vue.createApp({
          return {
             cart
             ,premium,
+            onSale,
             updateCart,
             removeFromCart,
             cartDisplay
@@ -43,4 +45,6 @@ const app = Vue.createApp({
 
 });
 app.component('product-display', productDisplay);
+app.component('review-form', reviewForm);
+app.component('review-list', reviewList)
 app.mount('#app');

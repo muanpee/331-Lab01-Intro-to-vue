@@ -24,12 +24,15 @@ const productDisplay = {
         </div>
         <button class="button" :disabled='!inStock' @click="addToCart" :class='{disabledButton: !inStock}'>Add To Cart</button>
         <button class="button" @click="removeFromCart">Remove</button>
+        <review-list :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
     </div>
     `,
         props: {
             premium:Boolean
         },
         setup(props,{emit}) {
+        const reviews = ref([])    
         const shipping = computed (()=>{
             if (props.premium) {
                 return 'Free'
@@ -77,6 +80,9 @@ const productDisplay = {
         function updateVariant(index) {
             selectedVariant.value = index;
         }
+        function addReview(review) {
+        reviews.value.push(review)
+        }
 
         const image = computed(() => {
             return variants.value[selectedVariant.value].image;
@@ -105,7 +111,9 @@ const productDisplay = {
             StockStatus,
             updateVariant,
             inStock,
-            shipping
+            shipping,
+            reviews,
+            addReview
         };
     }
 };
